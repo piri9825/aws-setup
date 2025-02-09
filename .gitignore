@@ -1,2 +1,6 @@
 /opentofu/.terraform
 terraform.tfstate.backup
+.venv
+.ruff_cache
+build_deploy_image.sh
+*.pyc

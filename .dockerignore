@@ -1,0 +1,6 @@
+.ruff_cache
+.venv
+.gitignore
+opentofu
+build_deploy_image.sh
+*.pyc

@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = var.state_bucket
+    bucket = "${var.project_name}-${var.state_bucket}"
     key    = var.state_key
     region = var.region
   }
