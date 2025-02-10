@@ -35,7 +35,7 @@ resource "aws_lambda_function" "ice_cot_lambda" {
   package_type  = "Image"
   image_uri     = "${aws_ecr_repository.ecr_repo.repository_url}:latest"
   image_config {
-    command = ["python", "-m", "pipelines.${var.ice_cot_lambda}"]
+    command = ["pipelines.${var.ice_cot_lambda}.handler"]
   }
   timeout = 30
 }

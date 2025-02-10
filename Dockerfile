@@ -1,13 +1,9 @@
-FROM python:3.10-slim
+FROM public.ecr.aws/lambda/python:3.10
 
-WORKDIR /app
-
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml uv.lock ${LAMBDA_TASK_ROOT}
 
 RUN pip install uv
 
 RUN uv pip install -r pyproject.toml --system
 
-ENV PYTHONPATH="/app"
-
-COPY . .
+COPY . ${LAMBDA_TASK_ROOT}
