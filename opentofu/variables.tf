@@ -42,3 +42,13 @@ variable "iam_lambda" {
   description = "IAM for Lambda Name"
   type        = string
 }
+
+variable "ice_cot_sns_push" {
+  description = "ICE COT SNS Push"
+  type        = string
+}
+
+variable "ice_cot_sqs" {
+  description = "ICE COT SQS"
+  type        = string
+}

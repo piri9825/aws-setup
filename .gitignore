@@ -4,3 +4,4 @@ terraform.tfstate.backup
 .ruff_cache
 build_deploy_image.sh
 *.pyc
+__pycache__

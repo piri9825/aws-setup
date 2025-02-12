@@ -9,4 +9,4 @@ def download_file(url: str) -> bytes:
 
     except requests.RequestException as e:
         print(f"Error downloading file: {e}")
-        return None
+        raise
