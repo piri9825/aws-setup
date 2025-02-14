@@ -12,14 +12,13 @@ def pull_ice_cot(year: int = 2025):
     key = f"{folder}{file_name}"
 
     sns_arn = "arn:aws:sns:eu-north-1:149536457876:ice_cot_sns_push"
-    message = {"status": "success", "file": file_name, "location": f"{bucket}/{key}"}
+    message = {"status": "success", "bucket": bucket, "key": key}
 
-    subject = f"ICE COT File {file_name} has been downloaded to {bucket}/{key}"
+    subject = f"ICE COT File has been downloaded to {bucket}/{key}"
 
     file = download_file(url)
     upload_to_s3(file, bucket, key)
-    resp = send_sns_message(sns_arn, subject, message)
-    print(resp)
+    send_sns_message(sns_arn, subject, message)
 
 
 def handler(event, context):

@@ -14,7 +14,7 @@ data "aws_iam_policy_document" "assume_role" {
 data "aws_iam_policy_document" "lambda_policy" {
   statement {
     effect    = "Allow"
-    actions   = ["s3:PutObject"]
+    actions   = ["s3:PutObject", "s3:GetObject"]
     resources = ["arn:aws:s3:::${aws_s3_bucket.datastore.id}/*"]
   }
 
@@ -32,6 +32,12 @@ data "aws_iam_policy_document" "lambda_policy" {
       "sqs:GetQueueAttributes"
     ]
     resources = [aws_sqs_queue.ice_cot_sqs.arn]
+  }
+
+  statement {
+    effect    = "Allow"
+    actions   = ["dynamodb:PutItem"]
+    resources = [aws_dynamodb_table.aws-setup-dynamodb.arn]
   }
 }
 

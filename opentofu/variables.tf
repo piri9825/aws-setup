@@ -33,8 +33,8 @@ variable "ecr_repo" {
   type        = string
 }
 
-variable "ice_cot_lambda" {
-  description = "ICE COT Lambda Function Name"
+variable "pull_ice_cot_lambda" {
+  description = "Pull ICE COT Lambda Function Name"
   type        = string
 }
 
@@ -50,5 +50,15 @@ variable "ice_cot_sns_push" {
 
 variable "ice_cot_sqs" {
   description = "ICE COT SQS"
+  type        = string
+}
+
+variable "process_ice_cot_lambda" {
+  description = "Process ICE COT Lambda Function Name"
+  type        = string
+}
+
+variable "aws-setup-dynamodb" {
+  description = "DynamoDB"
   type        = string
 }

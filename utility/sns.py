@@ -3,10 +3,8 @@ import json
 
 
 def send_sns_message(arn: str, subject: str, message: dict):
-    sns_client = boto3.client("sns")
+    sns_client = boto3.client("sns", region_name="eu-north-1")
 
-    resp = sns_client.publish(
-        TopicArn=arn, Message=json.dumps(message), Subject=subject
-    )
+    sns_client.publish(TopicArn=arn, Message=json.dumps(message), Subject=subject)
 
-    return resp
+    print(f"Message Sent: {json.dumps(message)}")
