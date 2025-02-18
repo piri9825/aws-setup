@@ -39,6 +39,12 @@ data "aws_iam_policy_document" "lambda_policy" {
     actions   = ["dynamodb:PutItem"]
     resources = [aws_dynamodb_table.aws-setup-dynamodb.arn]
   }
+
+  statement {
+    effect    = "Allow"
+    actions   = ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"]
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_role" "iam_for_lambda" {

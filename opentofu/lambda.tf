@@ -7,6 +7,13 @@ resource "aws_lambda_function" "pull_ice_cot_lambda" {
     command = ["pipelines.${var.pull_ice_cot_lambda}.handler"]
   }
   timeout = 30
+  environment {
+    variables = {
+      LOG_LEVEL = "INFO"
+    }
+  }
+
+  depends_on = [aws_cloudwatch_log_group.pull_ice_cot_logs]
 }
 
 resource "aws_lambda_function" "process_ice_cot_lambda" {
@@ -18,6 +25,13 @@ resource "aws_lambda_function" "process_ice_cot_lambda" {
     command = ["pipelines.${var.process_ice_cot_lambda}.handler"]
   }
   timeout = 30
+  environment {
+    variables = {
+      LOG_LEVEL = "INFO"
+    }
+  }
+
+  depends_on = [aws_cloudwatch_log_group.process_ice_cot_logs]
 }
 
 resource "aws_lambda_event_source_mapping" "sqs_trigger" {
