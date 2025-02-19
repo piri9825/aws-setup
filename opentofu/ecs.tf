@@ -13,12 +13,12 @@ data "aws_ami" "latest_amazon_linux" {
 }
 
 resource "aws_instance" "ecs_instance" {
-  ami                    = data.aws_ami.latest_amazon_linux.id
-  instance_type          = "t3.medium"
-  key_name               = "ssh-key"
-  vpc_security_group_ids = [aws_security_group.ecs_sg.id]
-  subnet_id              = aws_subnet.public_1.id
-  iam_instance_profile   = aws_iam_instance_profile.ec2_instance_profile.name
+  ami                         = data.aws_ami.latest_amazon_linux.id
+  instance_type               = "t3.medium"
+  key_name                    = "ssh-key"
+  vpc_security_group_ids      = [aws_security_group.ecs_sg.id]
+  subnet_id                   = aws_subnet.public_1.id
+  iam_instance_profile        = aws_iam_instance_profile.ec2_instance_profile.name
   associate_public_ip_address = true
 
   user_data = <<-EOF
