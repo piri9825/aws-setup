@@ -7,3 +7,8 @@ resource "aws_cloudwatch_log_group" "process_ice_cot_logs" {
   name              = "/aws/lambda/${var.process_ice_cot_lambda}"
   retention_in_days = 7
 }
+
+resource "aws_cloudwatch_log_group" "ecs_log_group" {
+  name              = "/ecs/ice-cot-task"
+  retention_in_days = 7
+}

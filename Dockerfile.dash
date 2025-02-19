@@ -1,0 +1,15 @@
+FROM python:3.10-slim-buster
+
+WORKDIR /app
+
+COPY pyproject.toml uv.lock ./
+
+RUN pip install uv
+
+RUN uv pip install -r pyproject.toml --system
+
+COPY . .
+
+EXPOSE 8050
+
+ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:8050", "dashboard.wsgi:server"]
